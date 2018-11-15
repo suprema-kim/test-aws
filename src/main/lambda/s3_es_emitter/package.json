@@ -1,0 +1,14 @@
+{
+  "name": "s3_es_emitter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "S3ElasticSearchEmitter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "byline": "^5.0.0"
+  }
+}
