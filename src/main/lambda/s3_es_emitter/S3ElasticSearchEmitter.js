@@ -10,10 +10,10 @@ var stream = require('stream');
 
 /* Globals */
 var esDomain = {
-    endpoint: 'vpc-test-logging-jrow2hsxojj2hmmp4uftmhzmyi.ap-northeast-2.es.amazonaws.com',
+    endpoint: 'vpc-mc-elasticsearch-pspilhbb5z5iwpdow63jizsb6e.ap-northeast-2.es.amazonaws.com',
     region: 'ap-northeast-2',
-    index: 'weblog',
-    doctype: 'tomcat'
+    index: 'webserver-log',
+    doctype: 'application'
 };
 var endpoint =  new AWS.Endpoint(esDomain.endpoint);
 var s3 = new AWS.S3();
