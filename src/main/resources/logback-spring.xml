@@ -4,15 +4,18 @@
     <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
     <!-- 변수 지정 -->
-    <property name="LOG_DIR" value="./logs" />
-    <property name="LOG_PATH_NAME" value="${LOG_DIR}/data.log" />
+    <property name="LOG_DIR" value="/var/log/webserver" />
+    <property name="LOG_FILE_NAME" value="${LOG_DIR}/weblog" />
+
+    <property name="LOG_FILE" value="${LOG_FILE_NAME}.log" />
+    <property name="LOG_FILE_JSON" value="${LOG_FILE_NAME}.json" />
 
     <!-- FILE Appender -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH_NAME}</file>
+        <file>${LOG_FILE}</file>
         <!-- 일자별로 로그파일 적용하기 -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH_NAME}.%d{yyyyMMdd}</fileNamePattern>
+            <fileNamePattern>${LOG_FILE}.%d{yyyyMMdd}</fileNamePattern>
             <maxHistory>60</maxHistory> <!-- 일자별 백업파일의 보관기간 -->
         </rollingPolicy>
         <encoder>
@@ -26,12 +29,11 @@
         </layout>
     </appender>
 
-    <property name="LOG_FILE" value="./logs/spring" />
     <!-- Appender to log to file in a JSON format -->
     <appender name="LOGSTASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}.json</file>
+        <file>${LOG_FILE_JSON}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_FILE}.json.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${LOG_FILE_JSON}.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
